@@ -52,40 +52,42 @@
 		"build:rollup": "rollup -c ./rollup.config.js",
 		"build:bundle-pdfjs-base": "node rollup/bundle-pdfjs-base.js",
 		"build": "npm run build:bundle-pdfjs-base && npm run build:rollup",
-		"prepare": "npm run build"
+		"build:clean": "rm -rf node_modules && rm -f package-lock.json && npm i && npm run build"
 	},
 	"engines": {
-		"node": ">=18.12.1",
-		"npm": ">=8.19.2"
+		"node": ">=20.18.0",
+		"npm": ">=10.8.2"
 	},
 	"type": "module",
 	"bin": {
 		"pdf2json": "./bin/pdf2json.js"
 	},
 	"dependencies": {
-		"@xmldom/xmldom": "^0.8.10"
-	},
-	"devDependencies": {
-		"@rollup/plugin-commonjs": "^25.0.4",
-		"@rollup/plugin-eslint": "^9.0.5",
-		"@rollup/plugin-json": "^6.1.0",
-		"@rollup/plugin-node-resolve": "^15.2.1",
-		"@rollup/plugin-terser": "^0.4.4",
-		"@rollup/plugin-typescript": "^11.1.6",
-		"@types/node": "^20.12.7",
-		"@typescript-eslint/eslint-plugin": "^7.8.0",
-		"@typescript-eslint/parser": "^7.8.0",
-		"eslint": "^8.56.0",
-		"jest": "^29.7.0",
-		"rollup": "^4.22.4",  
-		"rollup-plugin-node-builtins": "^2.1.2",
-		"rollup-plugin-sourcemaps": "^0.6.3",
-		"tslib": "^2.6.2",
-		"typescript": "^5.4.5"
+		"@xmldom/xmldom": "^0.9.5"
 	},
 	"bundledDependencies": [
 		"@xmldom/xmldom"
 	],
+	"devDependencies": {
+		"@rollup/plugin-commonjs": "^28.0.1",
+		"@rollup/plugin-eslint": "^9.0.5",
+		"@rollup/plugin-json": "^6.1.0",
+		"@rollup/plugin-node-resolve": "^15.2.1",
+		"@rollup/plugin-terser": "^0.4.4",
+		"@rollup/plugin-typescript": "^12.1.1",
+		"@types/node": "^22.10.1",
+		"@typescript-eslint/eslint-plugin": "^8.16.0",
+		"@typescript-eslint/parser": "^8.16.0",
+		"eslint": "^9.16.0",
+		"jest": "^29.7.0",
+		"rollup": "^4.22.4",
+		"rollup-plugin-node-builtins": "^2.1.2",
+		"rollup-plugin-sourcemaps": "^0.6.3",
+		"tslib": "^2.6.2"
+	},
+	"resolutions": {
+		"typescript": "5.7.0"
+	},
 	"maintainers": [{
 			"name": "Modesty Zhang",
 			"email": "modestyz@hotmail.com",
@@ -100,7 +102,7 @@
 	"readme": "https://github.com/modesty/pdf2json/blob/master/readme.md",
 	"exports": {
 		".": {
-			"types": "./pdfparser.d.ts",
+			"types": "./dist/pdfparser.d.ts",
 			"import": "./dist/pdfparser.js",
 			"require": "./dist/pdfparser.cjs"
 		}
